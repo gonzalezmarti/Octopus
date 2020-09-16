@@ -1,22 +1,21 @@
+#Import Necessary Modules
 import pybullet as p
 import time
 import pybullet_data as pda
 import os
-#physicsClient = p.connect(p.GUI)
-#p.setAdditionalSearchPath("/home/gonzalez/Downloads")
 
-#p.setAdditionalSearchPath(pda.getDataPath())
+#Next Step is to connect to the cloud
+physicsClient = p.connect(p.GUI)
+
+#This sets the plane (floor). 
+planeId = p.loadURDF(os.path.join(pda.getDataPath(),"plane100.urdf"))
+
+#Sets the gravity downward, (x,y,z)
+p.setGravity(0,0,-10)
+
+#The while loop allows the GUI to be perpetually running as <while True:> will always be true. <p.disconnect> allows the the computer to disconnect from the cloud so as to mess up future connections.  
 while True:
-    physicsClient = p.connect(p.GUI)
-
-
-#planeId = p.loadURDF("plane.urdf")
-
-#planeId = p.loadURDF(os.path.join(pda.getDataPath(),"plane100.urdf"))
-
-
-#planeId = p.loadURDF('/home/gonzalez/anaconda3/envs/robot/lib/python3.8/site-packages/pybullet_data/plane100.urdf')
-
-#while True:
-#   physicsClient = p.connect(p.GUI)
-
+    p.stepSimulation()
+cubePos, cubeOrn = p.getBasePositionAndOrientation(boxId)
+print(cubePos,cubeOrn)
+p.disconnect()
