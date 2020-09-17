@@ -16,7 +16,7 @@ physicsClient = p.connect(p.GUI)
 #planeId = p.loadURDF("octopus.urdf") #option 1 get the urdf from my directory
 
 planeId = p.loadURDF(os.path.join(pda.getDataPath(),"edgarURDF/plane100.urdf")) #option 2 transfer those urdf files to the pda directory
-
+#this is saved here /anaconda3/envs/robot/lib/python3.8/site-packages/pybullet_data/edgarURDF$
 
 #Sets the gravity downward, (x,y,z)
 p.setGravity(0,0,-10)
